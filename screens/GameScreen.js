@@ -1,5 +1,9 @@
 ﻿//GameScreen.js
 
+
+//Bradley Pike
+//Feb 12th 2024
+
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Animated } from 'react-native';
 import { FontAwesome6, Ionicons } from '@expo/vector-icons';
@@ -11,7 +15,7 @@ const GameScreen = () => {
     const navigation = useNavigation();
     const { numMines } = route.params;
     const [NUM_MINES, setNumMines] = useState(numMines); // Set NUM_MINES based on the received parameter
-    const GRID_SIZE = 5; // Adjust GRID_SIZE to your desired value
+    const GRID_SIZE = 5; 
     const [grid, setGrid] = useState(initializeGrid(GRID_SIZE));
     const [score, setScore] = useState(0);
     const [highScore, setHighScore] = useState(0);
@@ -110,11 +114,10 @@ const GameScreen = () => {
                 await AsyncStorage.setItem('highScore', score.toString());
             } catch (error) {
                 console.error('Error saving high score:', error);
-                // You might want to display a user-friendly error message here
             }
         }
 
-        // Delay transition to GameOver screen by 2 seconds
+        // Delay transition to GameOver screen by 3 seconds
         setTimeout(() => {
             navigation.navigate('GameOver');
         }, 3000);
